@@ -1,7 +1,7 @@
 
 import 'dart:ui';
 
-import 'package:birla/Utill/app_required.dart';
+import 'package:pidilite/Utill/app_required.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class DialogHelper {

@@ -1,4 +1,4 @@
-import 'package:birla/features/Photos/controller/MeetingPhotosListController.dart';
+import 'package:pidilite/features/Photos/controller/MeetingPhotosListController.dart';
 
 import '../../../Utill/app_required.dart';
 import '../../../Utill/custom_loader_widget.dart';

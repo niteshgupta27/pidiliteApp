@@ -1,8 +1,8 @@
 class AppConstants {
-  static const String appName = 'Birla';
+  static const String appName = 'pidilite';
   static const double appVersion = 7.4;
   static const String fontFamily = 'InriaSans';
-  static const String baseUrl = 'https://birla.nebulahub.in/api/';
+  static const String baseUrl = 'https://pidilite.nebula.in/api/';
   static const String configUri = '/api/v1/config';
 
   static var login='auth/login';

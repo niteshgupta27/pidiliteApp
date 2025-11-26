@@ -25,7 +25,7 @@ void main() {
 
     await Firebase.initializeApp();
     cameras = await availableCameras();
-    runApp(BirlaApp());
+    runApp(PidiliteApp());
   },(error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
   });

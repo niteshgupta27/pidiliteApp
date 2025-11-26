@@ -21,15 +21,15 @@ class AppUtils {
     );
   }
   static Future<bool> checkInternetConnectivity() async {
-    final birlaivityResult = await (Connectivity().checkConnectivity());
-    if (birlaivityResult == ConnectivityResult.mobile) {
+    final pidiliteivityResult = await (Connectivity().checkConnectivity());
+    if (pidiliteivityResult == ConnectivityResult.mobile) {
       debugPrint("User is connectivity to mobile network");
       return true;
-    } else if (birlaivityResult == ConnectivityResult.wifi) {
+    } else if (pidiliteivityResult == ConnectivityResult.wifi) {
       debugPrint("User is connectivity to wifi network");
       return true;
     } else {
-//showToast("Check Internet birlaivity");
+//showToast("Check Internet pidiliteivity");
       return false;
     }
   }

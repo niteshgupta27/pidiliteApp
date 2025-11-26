@@ -1,7 +1,7 @@
-import 'package:birla/Utill/app_required.dart';
-import 'package:birla/features/Photos/controller/AddMeetingPhotosController.dart';
-import 'package:birla/features/Photos/controller/MeetingPhotosListController.dart';
-import 'package:birla/features/Photos/service/MeetingPhotosService.dart';
+import 'package:pidilite/Utill/app_required.dart';
+import 'package:pidilite/features/Photos/controller/AddMeetingPhotosController.dart';
+import 'package:pidilite/features/Photos/controller/MeetingPhotosListController.dart';
+import 'package:pidilite/features/Photos/service/MeetingPhotosService.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/bindings_interface.dart';
 

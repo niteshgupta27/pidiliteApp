@@ -1,11 +1,11 @@
 
 
-import 'package:birla/features/attendee/binding/AttendeeBinding.dart';
-import 'package:birla/features/attendee/view/AddAttendee2View.dart';
-import 'package:birla/features/attendee/view/AddAttendeeView.dart';
-import 'package:birla/features/attendee/view/AttendeeView.dart';
-import 'package:birla/features/history/bindings/MeetingHistoryBindings.dart';
-import 'package:birla/features/history/view/Meeting_HistoryView.dart';
+import 'package:pidilite/features/attendee/binding/AttendeeBinding.dart';
+import 'package:pidilite/features/attendee/view/AddAttendee2View.dart';
+import 'package:pidilite/features/attendee/view/AddAttendeeView.dart';
+import 'package:pidilite/features/attendee/view/AttendeeView.dart';
+import 'package:pidilite/features/history/bindings/MeetingHistoryBindings.dart';
+import 'package:pidilite/features/history/view/Meeting_HistoryView.dart';
 
 import '../Utill/app_required.dart';
 
@@ -29,7 +29,7 @@ import '../features/permission/binding/PermissionBindings.dart';
 import '../features/permission/view/PermissionDeniedPage.dart';
 import '../features/splash/bindings/SplashBindings.dart';
 import '../features/splash/view/SplashView.dart';
-part 'package:birla/routes/app_routes.dart';
+part 'package:pidilite/routes/app_routes.dart';
 
 
 

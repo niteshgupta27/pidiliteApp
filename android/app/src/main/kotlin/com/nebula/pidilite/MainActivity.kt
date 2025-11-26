@@ -20,8 +20,8 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
-    private val CHANNEL = "com.nebulahub.birla/call"
-    private val CHANNEL1 = "com.nebulahub.birla/permissions"
+    private val CHANNEL = "com.nebula.pidilite/call"
+    private val CHANNEL1 = "com.nebula.pidilite/permissions"
 
     // private lateinit var telephonyManager: TelephonyManager
     // private lateinit var phoneStateListener: MyPhoneStateListener

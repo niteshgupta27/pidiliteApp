@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:birla/features/Detail/controller/MeetingDetailController.dart';
+import 'package:pidilite/features/Detail/controller/MeetingDetailController.dart';
 import 'package:flutter/services.dart';
 
 import '../../../Utill/app_required.dart';

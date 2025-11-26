@@ -1,5 +1,5 @@
-import 'package:birla/features/meeting/controller/Meeting_DashboardController.dart';
-import 'package:birla/features/meeting/services/Meeting_services.dart';
+import 'package:pidilite/features/meeting/controller/Meeting_DashboardController.dart';
+import 'package:pidilite/features/meeting/services/Meeting_services.dart';
 import 'package:get/get.dart';
 
 class MeetingBindings extends Bindings {

@@ -1,5 +1,5 @@
 
-import 'package:birla/Utill/app_required.dart';
+import 'package:pidilite/Utill/app_required.dart';
 
 import '../controller/SplashController.dart';
 

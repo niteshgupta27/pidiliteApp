@@ -1,7 +1,7 @@
 
 import 'dart:ui';
 
-import 'package:birla/routes/app_pages.dart';
+import 'package:pidilite/routes/app_pages.dart';
 import 'package:flutter/services.dart';
 
 import 'Utill/AppConstants.dart';

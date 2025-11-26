@@ -27,17 +27,17 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -50,26 +50,26 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCMQ47ZIwUP8Enq5SLldd_Sek2UiZXLEr0',
     appId: '1:730811119826:android:4534b17a347be4ae13d50b',
     messagingSenderId: '730811119826',
-    projectId: 'birla-5a845',
-    storageBucket: 'birla-5a845.firebasestorage.app',
+    projectId: 'one_pidilite-5a845',
+    storageBucket: 'one_pidilite-5a845.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAMEHqF-anVTkLQTqWaUFip2fHVsWV0Qtw',
     appId: '1:730811119826:ios:fbd76395a9dc630613d50b',
     messagingSenderId: '730811119826',
-    projectId: 'birla-5a845',
-    storageBucket: 'birla-5a845.firebasestorage.app',
-    iosBundleId: 'com.nebulahub.birla',
+    projectId: 'one_pidilite-5a845',
+    storageBucket: 'one_pidilite-5a845.firebasestorage.app',
+    iosBundleId: 'com.nebula.one_pidilite',
   );
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDT8gkdeCyVpZrHg_wHAAbD-xEpFCBIiSQ',
     appId: '1:629422214139:web:b5c0d423cafade6c11995e',
     messagingSenderId: '629422214139',
-    projectId: 'birla-ab574',
-    authDomain: 'birla-ab574.firebaseapp.com',
-    storageBucket: 'birla-ab574.firebasestorage.app',
+    projectId: 'one_pidilite-ab574',
+    authDomain: 'one_pidilite-ab574.firebaseapp.com',
+    storageBucket: 'one_pidilite-ab574.firebasestorage.app',
     measurementId: 'G-60Y3TTSLZ4',
   );
 

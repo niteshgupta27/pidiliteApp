@@ -23,7 +23,7 @@ class BaseClient extends GetConnect {
   static const int timeOutDuration = 50;
 
   static final appStorage = Get.find<AppStorage>();
-  final GetConnect birla = Get.find<GetConnect>();
+  final GetConnect pidilite = Get.find<GetConnect>();
 
   static Map<String, String> requestHeaders() {
     return <String, String>{

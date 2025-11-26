@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:birla/Utill/ImageHelper.dart';
-import 'package:birla/Utill/app_required.dart';
-import 'package:birla/features/Photos/service/MeetingPhotosService.dart';
+import 'package:pidilite/Utill/ImageHelper.dart';
+import 'package:pidilite/Utill/app_required.dart';
+import 'package:pidilite/features/Photos/service/MeetingPhotosService.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 

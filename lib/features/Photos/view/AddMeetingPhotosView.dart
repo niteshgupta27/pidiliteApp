@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:birla/features/Photos/controller/AddMeetingPhotosController.dart';
-import 'package:birla/features/Start/controller/MeetingStartController.dart';
+import 'package:pidilite/features/Photos/controller/AddMeetingPhotosController.dart';
+import 'package:pidilite/features/Start/controller/MeetingStartController.dart';
 import 'package:flutter/services.dart';
 
 import '../../../Utill/app_required.dart';

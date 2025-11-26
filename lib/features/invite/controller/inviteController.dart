@@ -16,7 +16,7 @@ import '../widgets/Follow.dart';
 
 class InviteController extends GetxController {
 
-  static const platform = MethodChannel('com.nebulahub.birla/call');
+  static const platform = MethodChannel('com.nebula.pidilite/call');
   RxBool isLoading = true.obs;
   var appStorage = Get.find<AppStorage>();
   var productServices = Get.find<InviteServices>();
@@ -236,7 +236,7 @@ print(appStorage.CalllogArray.length);
 
 class CallService {
 
-  static const platform = MethodChannel('com.nebulahub.birla/call');
+  static const platform = MethodChannel('com.nebula.pidilite/call');
 
    static makeDirectCall(String phoneNumber) async {
       try {
@@ -253,7 +253,7 @@ class CallService {
 
 }
 // class CallStateListener {
-//   static const platform = MethodChannel('com.nebulahub.birla/call');
+//   static const platform = MethodChannel('com.nebula.pidilite/call');
 //
 //   static Future<String?> listenForCallState() async {
 //     try {

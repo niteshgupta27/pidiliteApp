@@ -1,5 +1,5 @@
-import 'package:birla/Utill/app_required.dart';
-import 'package:birla/features/meetingDashboard/service/MeetingOptionService.dart';
+import 'package:pidilite/Utill/app_required.dart';
+import 'package:pidilite/features/meetingDashboard/service/MeetingOptionService.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../Utill/Apputills.dart';

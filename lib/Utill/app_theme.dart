@@ -1,4 +1,4 @@
-import 'package:birla/Utill/app_required.dart';
+import 'package:pidilite/Utill/app_required.dart';
 
 class AppTheme {
   static ThemeData geteasydialTheme() {

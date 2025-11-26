@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:birla/Utill/AppConstants.dart';
+import 'package:pidilite/Utill/AppConstants.dart';
 
 import '../utill/app_colors.dart';
 import 'Dimensions.dart';

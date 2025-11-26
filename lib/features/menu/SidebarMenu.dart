@@ -38,7 +38,7 @@ class SidebarMenu extends StatelessWidget {
                         ),
                       ),
                       // Text(
-                      //   'birla',
+                      //   'pidilite',
                       //   style: TextStyle(
                       //     color: AppColors.primaryColor,
                       //     fontWeight: FontWeight.bold,
