@@ -10,7 +10,6 @@ import '../../../Utill/Apputills.dart';
 import '../../../Utill/DialogHelper.dart';
 import '../../camera/camera_page.dart';
 import '../../meeting/model/TableMeetingsModel.dart';
-import '../../meeting/services/Meeting_services.dart';
 import '../model/MeetingPhotoTypesResponse.dart';
 
 class AddMeetingPhotosController extends GetxController {

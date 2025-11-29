@@ -2,7 +2,6 @@
 import '../../../Utill/AppConstants.dart';
 import '../../../Utill/app_base_client.dart';
 import '../../../model/GenralResponceModel.dart';
-import '../../meetingDashboard/model/progressModel.dart';
 import '../model/meetingDetailResponse.dart';
 
 class MeetingDetailService {

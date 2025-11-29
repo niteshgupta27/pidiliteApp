@@ -47,6 +47,12 @@ class PidiliteApp extends StatelessWidget {
               PointerDeviceKind.stylus,
               PointerDeviceKind.unknown,
             }),
+            builder: (context, child) {
+              return SafeArea(
+                top: false, // keep status bar overlay
+                bottom:true, // protect navigation bar area
+                child: child ?? const SizedBox(),
+              );}
           ),
         );
       },);

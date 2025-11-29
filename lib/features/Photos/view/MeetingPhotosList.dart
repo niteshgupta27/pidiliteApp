@@ -2,7 +2,6 @@ import 'package:pidilite/features/Photos/controller/MeetingPhotosListController.
 
 import '../../../Utill/app_required.dart';
 import '../../../Utill/custom_loader_widget.dart';
-import '../../meeting/SearchKeyWidget.dart';
 
 class MeetingPhotosList extends GetView<MeetingPhotosListController> {
 RxList _contacts = [].obs;

@@ -9,7 +9,6 @@ import '../../../Utill/Apputills.dart';
 import '../../../Utill/DialogHelper.dart';
 import '../../camera/camera_page.dart';
 import '../../meeting/model/TableMeetingsModel.dart';
-import '../../meeting/services/Meeting_services.dart';
 import '../model/meetingDetailResponse.dart';
 import '../service/MeetingDetailService.dart';
 

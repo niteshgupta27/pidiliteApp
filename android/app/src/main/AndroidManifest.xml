@@ -25,7 +25,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <application
-        android:label="pidilite"
+        android:label="Pidilite"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
