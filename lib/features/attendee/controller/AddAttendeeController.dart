@@ -32,7 +32,7 @@ class AddAttendeeController extends GetxController {
 
   //Rx<TextEditingController>  orderValueController = TextEditingController().obs;
   // Rx<TextEditingController>  orderDeailController = TextEditingController().obs;
-  // Rx<TextEditingController>  GiftGivenController = TextEditingController().obs;
+   Rx<TextEditingController>  GiftGivenController = TextEditingController().obs;
   Rx<TextEditingController> remark1Controller = TextEditingController().obs;
   Rx<TextEditingController> remark2Controller = TextEditingController().obs;
   Rx<TextEditingController> remark3Controller = TextEditingController().obs;
@@ -161,9 +161,10 @@ class AddAttendeeController extends GetxController {
       AppUtils.showSnackbar("Please enter valid mobile number", "Info");
     } else if (ShopnameController.value.text.trim().isEmpty) {
       AppUtils.showSnackbar("Please enter shop name", "Info");
-    } else if (ShopLocationController.value.text.trim().isEmpty) {
-      AppUtils.showSnackbar("Please enter shop location", "Info");
     }
+    // else if (ShopLocationController.value.text.trim().isEmpty) {
+    //   AppUtils.showSnackbar("Please enter shop location", "Info");
+    // }
     // else if (smartphoneOption == "Yes" && DownloadApp == "No" && PolisherApp == "No" && ReasonController.value.text.isEmpty) {
     //   AppUtils.showSnackbar("Please enter Reason", "Info");
     // } else if (participantOption == "Yes" && orderoption == "Yes" && orderValueController.value.text.isEmpty && orderDeailController.value.text.isEmpty) {
@@ -205,8 +206,7 @@ class AddAttendeeController extends GetxController {
       "fld_age": "",
       "fld_qualification": "",
       //QualificationController.value.text,
-      "fld_gift_given": "",
-      // GiftGivenController.value.text,
+      "fld_gift_given": GiftGivenController.value.text,
       "fld_contractor": 0,
       //participantOption.value=="Yes"&& Contractoroption.value=="Yes"?1:0,
       "fld_contractor_team_size": "",

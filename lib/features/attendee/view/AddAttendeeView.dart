@@ -123,7 +123,7 @@ class AddAttendeeView extends GetView<AddAttendeeController> {
                       TextField(
                         controller: controller.ShopnameController.value,
                         decoration: InputDecoration(
-                          labelText: 'Shop Name',
+                          labelText: 'Business Name',
                           labelStyle: const TextStyle(
                             color: AppColors.fountGray,
                           ),
@@ -152,43 +152,43 @@ class AddAttendeeView extends GetView<AddAttendeeController> {
                         // onChanged: (value) => controller.noteTitle.value = value,
                       ),
                       const SizedBox(height: 16),
-                      TextField(
-                        controller: controller.ShopLocationController.value,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          labelText: 'Shop Location',
-                          labelStyle: const TextStyle(
-                            color: AppColors.fountGray,
-                          ),
-                          // Change label color
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors.fountGray.withOpacity(0.4),
-                            ), // Default border
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors.fountGray.withOpacity(0.4),
-                            ), // Unfocused border color
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: AppColors.fountGray.withOpacity(0.4),
-                              width: 2.0,
-                            ),
-                            // Focused border color
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                        // onChanged: (value) => controller.noteDescription.value = value,
-                      ),
-                      const SizedBox(height: 16),
+                      // TextField(
+                      //   controller: controller.ShopLocationController.value,
+                      //   keyboardType: TextInputType.emailAddress,
+                      //   decoration: InputDecoration(
+                      //     labelText: 'Business Location',
+                      //     labelStyle: const TextStyle(
+                      //       color: AppColors.fountGray,
+                      //     ),
+                      //     // Change label color
+                      //     border: OutlineInputBorder(
+                      //       borderSide: BorderSide(
+                      //         color: AppColors.fountGray.withOpacity(0.4),
+                      //       ), // Default border
+                      //       borderRadius: BorderRadius.circular(8.0),
+                      //     ),
+                      //     enabledBorder: OutlineInputBorder(
+                      //       borderSide: BorderSide(
+                      //         color: AppColors.fountGray.withOpacity(0.4),
+                      //       ), // Unfocused border color
+                      //       borderRadius: BorderRadius.circular(8.0),
+                      //     ),
+                      //     focusedBorder: OutlineInputBorder(
+                      //       borderSide: BorderSide(
+                      //         color: AppColors.fountGray.withOpacity(0.4),
+                      //         width: 2.0,
+                      //       ),
+                      //       // Focused border color
+                      //       borderRadius: BorderRadius.circular(8.0),
+                      //     ),
+                      //   ),
+                      //   // onChanged: (value) => controller.noteDescription.value = value,
+                      // ),
+                      // const SizedBox(height: 16),
                       TextField(
                         controller: controller.shopCodeController.value,
                         decoration: InputDecoration(
-                          labelText: 'Shop Code (Optional)',
+                          labelText: 'Business Code (Optional)',
                           labelStyle: const TextStyle(
                             color: AppColors.fountGray,
                           ),
@@ -557,7 +557,7 @@ class AddAttendeeView extends GetView<AddAttendeeController> {
                         ),
                         // onChanged: (value) => controller.noteDescription.value = value,
                       ),
-                      const SizedBox(height: 16),
+                     // const SizedBox(height: 16),
                       //               if(controller.participantOption.value=="Yes")
                       // Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
                       //               Padding(padding: EdgeInsets.all(5),child:  Text(
@@ -621,25 +621,25 @@ class AddAttendeeView extends GetView<AddAttendeeController> {
                       //       ),),
                       //     // onChanged: (value) => controller.noteDescription.value = value,
                       //   ),]),
-                      // const SizedBox(height: 16),
-                      // TextField(controller: controller.GiftGivenController.value,
-                      //   decoration: InputDecoration(labelText: 'Gift Given ',
-                      //     labelStyle: const TextStyle(color: AppColors.fountGray),
-                      //     // Change label color
-                      //     border: OutlineInputBorder(
-                      //       borderSide: BorderSide(color: AppColors.fountGray.withOpacity(0.4)), // Default border
-                      //       borderRadius: BorderRadius.circular(8.0),
-                      //     ),
-                      //     enabledBorder: OutlineInputBorder(
-                      //       borderSide: BorderSide(color: AppColors.fountGray.withOpacity(0.4)), // Unfocused border color
-                      //       borderRadius: BorderRadius.circular(8.0),
-                      //     ),
-                      //     focusedBorder: OutlineInputBorder(
-                      //       borderSide: BorderSide(color: AppColors.fountGray.withOpacity(0.4), width: 2.0), // Focused border color
-                      //       borderRadius: BorderRadius.circular(8.0),
-                      //     ),),
-                      //   // onChanged: (value) => controller.noteDescription.value = value,
-                      // ),
+                      const SizedBox(height: 16),
+                      TextField(controller: controller.GiftGivenController.value,
+                        decoration: InputDecoration(labelText: 'Gift Given (Optional)',
+                          labelStyle: const TextStyle(color: AppColors.fountGray),
+                          // Change label color
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.fountGray.withOpacity(0.4)), // Default border
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.fountGray.withOpacity(0.4)), // Unfocused border color
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.fountGray.withOpacity(0.4), width: 2.0), // Focused border color
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),),
+                        // onChanged: (value) => controller.noteDescription.value = value,
+                      ),
                       const SizedBox(height: 16),
                       TextField(
                         controller: controller.remark1Controller.value,

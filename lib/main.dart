@@ -23,7 +23,7 @@ void main() {
     //   statusBarIconBrightness: Brightness.light,
     // ));
 
-    await Firebase.initializeApp();
+    //await Firebase.initializeApp();
     cameras = await availableCameras();
     runApp(PidiliteApp());
   },(error, stack) {

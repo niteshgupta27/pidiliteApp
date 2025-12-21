@@ -73,6 +73,7 @@ class LiveView extends GetView<AttendeeController> {
                               ),
                               onTap: () => CallService.makeDirectCall(order.fldMobile!),
                             ),
+                            const SizedBox(width: 10),
                             Text(
                               order.fldMobile,
                               style: const TextStyle(
@@ -81,21 +82,21 @@ class LiveView extends GetView<AttendeeController> {
                                 color: Colors.black87,
                               ),
                             ),
-                            const SizedBox(width: 25),
-                            const Icon(Icons.shopping_cart, size: 24, color: Colors.grey),
-                            const SizedBox(width: 5),
-                            const Text(
-                              "Order: ",
-                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              order.fldOrderPlaced == "1" ? "Yes" : "No",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.fountGray,
-                              ),
-                            ),
+                            // const SizedBox(width: 25),
+                            // const Icon(Icons.shopping_cart, size: 24, color: Colors.grey),
+                            // const SizedBox(width: 5),
+                            // const Text(
+                            //   "Order: ",
+                            //   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                            // ),
+                            // Text(
+                            //   order.fldOrderPlaced == "1" ? "Yes" : "No",
+                            //   style: TextStyle(
+                            //     fontSize: 12,
+                            //     fontWeight: FontWeight.w600,
+                            //     color: AppColors.fountGray,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ],

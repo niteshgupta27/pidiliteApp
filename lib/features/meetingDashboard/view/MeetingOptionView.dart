@@ -108,25 +108,26 @@ class MeetingOptionView extends GetView<MeetingOptionController> {
                     ),
                   ),
                   if (controller.data.value.meetingFinish == 1)
-                    GestureDetector(
-                      onTap: () => controller.finshbutton(),
-                      child: Container(
-                        margin: const EdgeInsets.all(5),
-                        padding: const EdgeInsets.all(5),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        child: const Text(
-                          "Finish",
-                          style: TextStyle(
-                            fontFamily: 'PoppinsSemiBold',
-                            color: Colors.white,
-                            fontSize: 19,
+                   Center(child:  SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ), // Set the radius here
                           ),
                         ),
+                        onPressed: () {
+                          controller.finshbutton();
+                        },
+                        child: Text(
+                          "Finish Meeting".tr,
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColors.whites),
+                        ),
                       ),
-                    ),
+                    ),),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
