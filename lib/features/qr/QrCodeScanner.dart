@@ -77,7 +77,7 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
       mFunSignIn(scannedText);
     }
     else {
-      // ScaffoldMessenger.of(context).showSnackBar(
+      // ScaffoldMessenger.of(context).showSnackbar(Get.context!,
       //     SnackBar(content: Text("Invalid Meeting User"))
       // );
       // Assuming finish() is a method to close the current page, you can use Navigator to pop the page
@@ -99,7 +99,7 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
        });
        Navigator.of(context).pop();
      }else{
-       AppUtils.showSnackbar(response['message'],"Error");
+       AppUtils.showSnackbar(Get.context!,response['message'],"Error");
        setState(() {
          isLoading=false;
        });

@@ -9,6 +9,8 @@ import 'package:get_storage/get_storage.dart';
 
 import 'Utill/app_colors.dart';
 import 'Pidilite.dart';
+import 'firebase_options.dart';
+
 ValueNotifier<Color> appBarColorNotifier = ValueNotifier<Color>(AppColors.yellow);
 late List<CameraDescription> cameras;
 
@@ -17,20 +19,18 @@ void main() {
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     await GetStorage.init();
-    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    //   statusBarColor: AppColors.primaryColor,
-    //   statusBarBrightness: Brightness.dark,
-    //   statusBarIconBrightness: Brightness.light,
-    // ));
-
-    //await Firebase.initializeApp();
+    
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    
     cameras = await availableCameras();
-    runApp(PidiliteApp());
+    runApp(const PidiliteApp());
   },(error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
   });
-
-
 }
 
 

@@ -63,13 +63,14 @@ class MeetingDetailController extends GetxController {
 
        // File file = File(photo.path);
         File processedFile = await ImageHelper.processImage(file, meeting.value, "Hotel Bill");
+        String? compressedPath = await ImageHelper.compressImage(processedFile);
         if (imagetype == "p") {
-          fld_p_image_path.value = processedFile.path;
+          fld_p_image_path.value = compressedPath ?? processedFile.path;
         } else if (imagetype == "t") {
-          fld_t_image_path.value = processedFile.path;
+          fld_t_image_path.value = compressedPath ?? processedFile.path;
         }
       } catch (e) {
-      AppUtils.showSnackbar(e.toString(), "Info");
+      AppUtils.showSnackbar(Get.context!,e.toString(), "Info");
       print("Error during image selection: $e"); //Proper logging for debugging and reporting
       // Handle errors appropriately, e.g., display an error message to the user.
     }
@@ -83,7 +84,7 @@ class MeetingDetailController extends GetxController {
       HomeApi();
 
     }else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
   void HomeApi() {
@@ -112,12 +113,12 @@ class MeetingDetailController extends GetxController {
       } else {
         // Get.back();
 
-        AppUtils.showSnackbar(value.message.toString(),  "Info");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),  "Info");
       }
     }).catchError((err) {
       // Get.back();
       isLoading.value = false;
-      AppUtils.showSnackbar("Something went wrong","Oops");
+      AppUtils.showSnackbar(Get.context!,"Something went wrong","Oops");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -148,26 +149,26 @@ class MeetingDetailController extends GetxController {
             // Get.offNamed(Routes.HOMESCREEN);
             CallNoteAdd_update();
           } else {
-            AppUtils.showSnackbar("Please check Internet Connection", "Info");
+            AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
           }
 
       } else {
-        AppUtils.showSnackbar("Please take a Bill Photo.", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please take a Bill Photo.", "Info");
         //Show error
       }
     } else {
-      AppUtils.showSnackbar("Please enter gift option", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter gift option", "Info");
       //Show N
     }
         // }else{
-        //   AppUtils.showSnackbar("Please enter a Gift item.", "Info");
+        //   AppUtils.showSnackbar(Get.context!,"Please enter a Gift item.", "Info");
         // }
       } else {
-        AppUtils.showSnackbar("Please enter a Non Participant.", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please enter a Non Participant.", "Info");
         //Show error
       }
     } else {
-      AppUtils.showSnackbar("Please enter a Attendee.", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter a Attendee.", "Info");
       //Show N
     }
   }
@@ -198,13 +199,13 @@ class MeetingDetailController extends GetxController {
 
        // changeMeetingStatus();
         Get.back(result: {"status": "success",});
-        AppUtils.showSnackbar(value.message.toString(),"success");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"success");
       }else{
-        AppUtils.showSnackbar(value.message.toString(),"Error");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
       }
     }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"server Error");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }

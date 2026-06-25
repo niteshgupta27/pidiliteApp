@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,6 +14,18 @@ import 'app_storage.dart';
 import 'package:image/image.dart' as img;
 
 class ImageHelper {
+  static Future<String?> compressImage(File file) async {
+    final filePath = file.absolute.path;
+    final lastIndex = filePath.lastIndexOf('.');
+    final splitted = filePath.substring(0, (lastIndex));
+    final outPath = "${splitted}_out.jpg";
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path, outPath,
+      quality: 40,
+    );
+    return result?.path;
+  }
+
   /// Process the image (Resize + Overlay Text)
  static Future<File> processImage(File imageFile, TableMeetingsModel meeting, String name) async {
     var appStorage = Get.find<AppStorage>();

@@ -33,14 +33,14 @@ class LoginController extends GetxController {
       if (await AppUtils.checkInternetConnectivity()) {
       login(username,password);
     }else {
-        AppUtils.showSnackbar("Please check Internet Connection", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
       }
       } else {
-        AppUtils.showSnackbar("Please enter a valid password.", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please enter a valid password.", "Info");
         //Show error
       }
     } else {
-      AppUtils.showSnackbar("Please enter a valid username.", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter a valid username.", "Info");
       //Show error
     }
   }
@@ -65,11 +65,11 @@ class LoginController extends GetxController {
       } else {
         // Get.back();
 
-        AppUtils.showSnackbar(value.message.toString(),  "Info");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),  "Info");
       }
         }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"Oops");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"Oops");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }

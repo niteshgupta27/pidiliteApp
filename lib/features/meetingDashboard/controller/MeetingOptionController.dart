@@ -36,17 +36,17 @@ Rx<progressModel>data=progressModel.fromJson({}).obs;
           changeMeetingStatus();
         }
         else {
-          AppUtils.showSnackbar("Please Check the Meeting Attendee data.", "Info");
+          AppUtils.showSnackbar(Get.context!,"Please Check the Meeting Attendee data.", "Info");
         }
       } else {
-        AppUtils.showSnackbar("Please Check the Meeting Detail data.", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please Check the Meeting Detail data.", "Info");
       }
     }else {
-      AppUtils.showSnackbar("Please Check the Meeting Photos data.", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please Check the Meeting Photos data.", "Info");
     }
   }
     else {
-      AppUtils.showSnackbar("Please Check the Meeting Info data.", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please Check the Meeting Info data.", "Info");
     }
   }
   Future<void> getversion() async {
@@ -59,7 +59,7 @@ Rx<progressModel>data=progressModel.fromJson({}).obs;
       progressCheckApi();
 
     }else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
   void progressCheckApi() {
@@ -92,12 +92,12 @@ data.value=value.data!;
       } else {
         // Get.back();
 
-        AppUtils.showSnackbar(value.message.toString(),  "Info");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),  "Info");
       }
     }).catchError((err) {
       // Get.back();
       isLoading.value = false;
-      AppUtils.showSnackbar("Something went wrong","Oops");
+      AppUtils.showSnackbar(Get.context!,"Something went wrong","Oops");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -116,13 +116,13 @@ data.value=value.data!;
       isLoading.value = false;
       if(value.success==true) {
         Get.back(result: {"status": "success",});
-        AppUtils.showSnackbar(value.message.toString(),"success");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"success");
       }else{
-        AppUtils.showSnackbar(value.message.toString(),"Error");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
       }
     }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"server Error");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }

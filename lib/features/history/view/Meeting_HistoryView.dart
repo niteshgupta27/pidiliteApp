@@ -43,120 +43,122 @@ class Meeting_HistoryView extends GetView<Meeting_HistoryController> {
 
             ),
 
-      body: CustomScrollView(
-        controller: scrollController,
-        slivers: [
-          SliverToBoxAdapter(
-            child:Obx(() =>controller.isLoading.value ?  const Center(child: CircularProgressIndicator()) : Center(
-              child: Container(
-               // color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    //headerMedile(),
-                    // Center(
-                    //   child: Stack(
-                    //     children: [
-                    //       // Background image
-                    //       CustomPaint(
-                    //         size: const Size(170, 30),
-                    //         painter: ShapePainter(Colore: AppColors.primaryColor),
-                    //       ),
-                    //
-                    //       // Your Container with the discount label
-                    //       Positioned.fill(
-                    //         child: Text(
-                    //           '',
-                    //           textAlign: TextAlign.center,
-                    //           style: Styles.inriaSansBold.copyWith(
-                    //               color: AppColors.whites,
-                    //               fontSize: Dimensions.fontSizeLarge),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                   // SearchKeyWidget(items: controller.tages, onTap: (index) {},),
-                    ListView(
-                      shrinkWrap: true, // ✅ Prevent infinite height error
-                      physics: NeverScrollableScrollPhysics(),
-                      padding: const EdgeInsets.only(top: 5,bottom: 40),
-                      children: controller.groupedMeetings.entries.map((entry) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            /// 🟢 Section Title (Purpose)
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
-                              child: Text(
-                                entry.key!, // Purpose Title
-                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      body: SafeArea(
+        child: CustomScrollView(
+          controller: scrollController,
+          slivers: [
+            SliverToBoxAdapter(
+              child:Obx(() =>controller.isLoading.value ?  const Center(child: CircularProgressIndicator()) : Center(
+                child: Container(
+                 // color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      //headerMedile(),
+                      // Center(
+                      //   child: Stack(
+                      //     children: [
+                      //       // Background image
+                      //       CustomPaint(
+                      //         size: const Size(170, 30),
+                      //         painter: ShapePainter(Colore: AppColors.primaryColor),
+                      //       ),
+                      //
+                      //       // Your Container with the discount label
+                      //       Positioned.fill(
+                      //         child: Text(
+                      //           '',
+                      //           textAlign: TextAlign.center,
+                      //           style: Styles.inriaSansBold.copyWith(
+                      //               color: AppColors.whites,
+                      //               fontSize: Dimensions.fontSizeLarge),
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                     // SearchKeyWidget(items: controller.tages, onTap: (index) {},),
+                      ListView(
+                        shrinkWrap: true, // ✅ Prevent infinite height error
+                        physics: NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.only(top: 5,bottom: 40),
+                        children: controller.groupedMeetings.entries.map((entry) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              /// 🟢 Section Title (Purpose)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
+                                child: Text(
+                                  entry.key!, // Purpose Title
+                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            ),
-
-                            /// 🟡 Horizontal List of Images + Text
-                            ListView.separated(
-                              itemCount: entry.value.length,
-
-                              shrinkWrap: true, // Ensures GridView only takes necessary space
-                              physics: NeverScrollableScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                final imageItem = entry.value[index];
-
-                                return meetingitem(context,imageItem);
-                              },
-                              separatorBuilder: (context,index) {
-                                return const SizedBox(height: Dimensions.x0_6);
-                              },
-                            ),
-
-                            //SizedBox(height: 5), // Spacing between sections
-                          ],
-                        );
-                      }).toList(),
-                    ),
-
-                    // Column(
-                    //   children: _buildDynamicRowsproductSlider(context), // Generate rows dynamically from data
-                    // ),
-                    const SizedBox(height: Dimensions.x36),
-
-                    // OR continue with text
-                    // Text(
-                    //   '-- Powered By --',
-                    //   textAlign: TextAlign.center,
-                    //   style: Styles.inriaSansBold.copyWith(
-                    //     fontSize: Dimensions.fontSizeLarge,
-                    //     color: const Color(0xFF626262),
-                    //     fontWeight: FontWeight.w500,
-                    //   ),
-                    // ),
-
-                    const SizedBox(height: Dimensions.x16),
-
-
-                    // Terms & Conditions
-                    Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Image.asset(Images.poweredby)
-                    ),
-                    const SizedBox(height: Dimensions.x0_8),
-
-                    Text(
-                      "App Version ${controller.appName.value}",
-                      textAlign: TextAlign.center,
-                      style: Styles.inriaSansBold.copyWith(
-                        fontSize: Dimensions.fontSizeLarge,
-                        color: const Color(0xFF626262),
-                        fontWeight: FontWeight.w500,
+  
+                              /// 🟡 Horizontal List of Images + Text
+                              ListView.separated(
+                                itemCount: entry.value.length,
+  
+                                shrinkWrap: true, // Ensures GridView only takes necessary space
+                                physics: NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  final imageItem = entry.value[index];
+  
+                                  return meetingitem(context,imageItem);
+                                },
+                                separatorBuilder: (context,index) {
+                                  return const SizedBox(height: Dimensions.x0_6);
+                                },
+                              ),
+  
+                              //SizedBox(height: 5), // Spacing between sections
+                            ],
+                          );
+                        }).toList(),
                       ),
-                    ),
-                  ],
+  
+                      // Column(
+                      //   children: _buildDynamicRowsproductSlider(context), // Generate rows dynamically from data
+                      // ),
+                      const SizedBox(height: Dimensions.x36),
+  
+                      // OR continue with text
+                      // Text(
+                      //   '-- Powered By --',
+                      //   textAlign: TextAlign.center,
+                      //   style: Styles.inriaSansBold.copyWith(
+                      //     fontSize: Dimensions.fontSizeLarge,
+                      //     color: const Color(0xFF626262),
+                      //     fontWeight: FontWeight.w500,
+                      //   ),
+                      // ),
+  
+                      const SizedBox(height: Dimensions.x16),
+  
+  
+                      // Terms & Conditions
+                      Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Image.asset(Images.poweredby)
+                      ),
+                      const SizedBox(height: Dimensions.x0_8),
+  
+                      Text(
+                        "App Version ${controller.appName.value}",
+                        textAlign: TextAlign.center,
+                        style: Styles.inriaSansBold.copyWith(
+                          fontSize: Dimensions.fontSizeLarge,
+                          color: const Color(0xFF626262),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ),)
-          ),
-        ],
+              ),)
+            ),
+          ],
+        ),
       ),
       // floatingActionButtonLocation: MyCustomFabLocation(),
       // // Use custom FAB location

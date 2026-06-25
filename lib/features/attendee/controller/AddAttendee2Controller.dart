@@ -75,21 +75,21 @@ class AddAttendee2Controller extends GetxController {
         Table_Attendee data = arguments['Attendees'];
         Phone_NumberController.value.text = data.fldMobile;
         Painter_NameController.value.text=data.fldAttendeeName;
-        Pan_CardController.value.text = data.fldPancard!;
-        QualificationController.value.text = data.fldQualification!;
-        ReasonController.value.text = data.fldNotDownloadReason!;
-        teamSizeController.value.text = data.fldContractorTeamSize!;
-        ConsumptionController.value.text = data.fldCompetitionPoints!;
-        DobController.value.text = data.fldDob!;
+        Pan_CardController.value.text = data.fldPancard ?? '';
+        QualificationController.value.text = data.fldQualification ?? '';
+        ReasonController.value.text = data.fldNotDownloadReason ?? '';
+        teamSizeController.value.text = data.fldContractorTeamSize ?? '';
+        ConsumptionController.value.text = data.fldCompetitionPoints ?? '';
+        DobController.value.text = data.fldDob ?? '';
         orderValueController.value.text = data.fldOrderPlaced;
-        orderDeailController.value.text = data.fldOrderDetails!;
+        orderDeailController.value.text = data.fldOrderDetails ?? '';
         GiftGivenController.value.text = data.fldGiftGiven;
-        remark1Controller.value.text = data.fldRemark1!;
-        remark2Controller.value.text = data.fldRemark2!;
-        remark3Controller.value.text = data.fldRemark3!;
-        Reference1Controller.value.text=data.fldRef1!;
-        Reference2Controller.value.text=data.fldRef2!;
-        Reference3Controller.value.text=data.fldRef3!;
+        remark1Controller.value.text = data.fldRemark1 ?? '';
+        remark2Controller.value.text = data.fldRemark2 ?? '';
+        remark3Controller.value.text = data.fldRemark3 ?? '';
+        Reference1Controller.value.text=data.fldRef1 ?? '';
+        Reference2Controller.value.text=data.fldRef2 ?? '';
+        Reference3Controller.value.text=data.fldRef3 ?? '';
 
         smartphoneOption.value=data.fldSmartphone=="1"?"Yes":"No";
         DownloadApp.value=data.fldAppDownloadNebula=="1"?"Yes":"No";
@@ -104,17 +104,17 @@ class AddAttendee2Controller extends GetxController {
 
         if(data.fldDealerId.isNotEmpty) {
           selectedDealer.value = dealers.firstWhere((dealer) => dealer.fldDrid == int.parse(data.fldDealerId));
-          DealerCodeController.value.text = selectedDealer.value.fldRcode!;
+          DealerCodeController.value.text = selectedDealer.value.fldRcode ?? '';
         }else{
           selectedDealer.value=dealers.first;
-          DealerCodeController.value.text = selectedDealer.value.fldRcode!;
+          DealerCodeController.value.text = selectedDealer.value.fldRcode ?? '';
 
         }
         //CallGetdata();
       }
       else{
         selectedDealer.value=dealers.first;
-        DealerCodeController.value.text = selectedDealer.value.fldRcode!;
+        DealerCodeController.value.text = selectedDealer.value.fldRcode ?? '';
 
       }
     }
@@ -137,37 +137,37 @@ class AddAttendee2Controller extends GetxController {
 
 
     if (Painter_NameController.value.text.trim().isEmpty) {
-      AppUtils.showSnackbar("Please enter your name", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter your name", "Info");
     } else if (Phone_NumberController.value.text.trim().isEmpty) {
-      AppUtils.showSnackbar("Please enter mobile number", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter mobile number", "Info");
     } else if (!RegExp(regex).hasMatch(Phone_NumberController.value.text)) {
-      AppUtils.showSnackbar("Please enter valid mobile number", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter valid mobile number", "Info");
     } else if (participantOption == "Yes" && DobController.value.text.toString().trim().isEmpty) {
-      AppUtils.showSnackbar("Please enter Dob", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter Dob", "Info");
     }else if (participantOption == "Yes" && !isValidDate(DobController.value.text)) {
-      AppUtils.showSnackbar("Invalid date or not before current date", "Info");
+      AppUtils.showSnackbar(Get.context!,"Invalid date or not before current date", "Info");
     }
     else if (smartphoneOption == "Yes" && DownloadApp == "No" && PolisherApp == "No" && ReasonController.value.text.isEmpty) {
-      AppUtils.showSnackbar("Please enter Reason", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter Reason", "Info");
     } else if (participantOption == "Yes" && orderoption == "Yes" && orderValueController.value.text.isEmpty && orderDeailController.value.text.isEmpty) {
-      AppUtils.showSnackbar("Please enter valid order details", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter valid order details", "Info");
     }
     // else if (GiftGivenController.value.text.isEmpty) {
     //   AppUtils.showSnackbar("Please enter gift Given", "Info");
     // }
     else if (participantOption == "Yes" && teamSizeController.value.text.isEmpty) {
-      AppUtils.showSnackbar("Please enter Team Size", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter Team Size", "Info");
      } else if (participantOption == "Yes" && ConsumptionController.value.text.isEmpty) {
-      AppUtils.showSnackbar("Please enter Consumption", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter Consumption", "Info");
     }
     else if (selectedDealer.value.fldDrid==0) {
-      AppUtils.showSnackbar("Please select dealer name", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please select dealer name", "Info");
     } else {
       if (await AppUtils.checkInternetConnectivity()) {
         // Get.offNamed(Routes.HOMESCREEN);
         CallNoteAdd_update();
       } else {
-        AppUtils.showSnackbar("Please check Internet Connection", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
       }
     }
 
@@ -202,11 +202,11 @@ class AddAttendee2Controller extends GetxController {
       if(value.success==true) {
         Adhesive.value=value.data;
       }else{
-        AppUtils.showSnackbar(value.message.toString(),"Error");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
       }
     }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"server Error");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -260,13 +260,13 @@ class AddAttendee2Controller extends GetxController {
       isLoading.value = false;
       if(value.success==true) {
         Get.back(result: {"status": "success",});
-        AppUtils.showSnackbar(value.message.toString(),"success");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"success");
       }else{
-        AppUtils.showSnackbar(value.message.toString(),"Error");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
       }
     }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"server Error");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -282,12 +282,12 @@ class AddAttendee2Controller extends GetxController {
       } else {
         // Get.back();
 
-        AppUtils.showSnackbar(value.message.toString(),  "Info");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),  "Info");
       }
     }).catchError((err) {
       // Get.back();
       isLoading.value = false;
-      AppUtils.showSnackbar("Something went wrong","Oops");
+      AppUtils.showSnackbar(Get.context!,"Something went wrong","Oops");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -296,7 +296,7 @@ class AddAttendee2Controller extends GetxController {
       getstaffvalue();
 
     }else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
 }

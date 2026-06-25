@@ -34,112 +34,114 @@ class Meeting_DashboardView extends GetView<MeetingDashboardController> {
         iconTheme: IconThemeData(size: 37, color: AppColors.whites),
       ),
 
-      body: CustomScrollView(
-        controller: scrollController,
-        slivers: [
-          SliverToBoxAdapter(
-            child: Obx(
-              () => controller.isLoading.value
-                  ? const Center(child: CircularProgressIndicator())
-                  : Center(
-                      child: Container(
-                        // color: Colors.white,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            //headerMedile(),
-                            // Center(
-                            //   child: Stack(
-                            //     children: [
-                            //       // Background image
-                            //       CustomPaint(
-                            //         size: const Size(170, 30),
-                            //         painter: ShapePainter(Colore: AppColors.primaryColor),
-                            //       ),
-                            //
-                            //       // Your Container with the discount label
-                            //       Positioned.fill(
-                            //         child: Text(
-                            //           '',
-                            //           textAlign: TextAlign.center,
-                            //           style: Styles.inriaSansBold.copyWith(
-                            //               color: AppColors.whites,
-                            //               fontSize: Dimensions.fontSizeLarge),
-                            //         ),
-                            //       ),
-                            //     ],
-                            //   ),
-                            // ),
-                            // SearchKeyWidget(items: controller.tages, onTap: (index) {},),
-                            SearchKeyWidget(
-                              items: controller.tages,
-                              onTap: (index) {
-                                controller.selected.value = index;
-                                controller.getmeeting_by_date(index);
-                              },
-                              SelectedIndex: controller.selected.value,
-                            ),
-                            Column(
-                              children: _buildDynamicRowsproductSlider(
-                                context,
-                              ), // Generate rows dynamically from data
-                            ),
-                            const SizedBox(height: Dimensions.x40),
-
-                            // OR continue with text
-                            // Text(
-                            //   '-- Powered By --',
-                            //   textAlign: TextAlign.center,
-                            //   style: Styles.inriaSansBold.copyWith(
-                            //     fontSize: Dimensions.fontSizeLarge,
-                            //     color: const Color(0xFF626262),
-                            //     fontWeight: FontWeight.w500,
-                            //   ),
-                            // ),
-                            // Container(
-                            //   height: 200,width: 200,
-                            //   decoration: const BoxDecoration(
-                            //     image: DecorationImage(
-                            //       image: AssetImage(Images.toll_free_qr),
-                            //       fit: BoxFit.fill,
-                            //     ),
-                            //   ),
-                            // ),
-                            //     const SizedBox(height: Dimensions.x16),
-                            // Text(
-                            //   "${AppConstants.tollfree}",
-                            //   textAlign: TextAlign.center,
-                            //   style: Styles.inriaSansBold.copyWith(
-                            //     fontSize: Dimensions.fontSizeLarge,
-                            //     color: AppColors.primaryColor,
-                            //     fontWeight: FontWeight.w500,
-                            //   ),),
-                            const SizedBox(height: Dimensions.x20),
-                            // Terms & Conditions
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
+      body: SafeArea(
+        child: CustomScrollView(
+          controller: scrollController,
+          slivers: [
+            SliverToBoxAdapter(
+              child: Obx(
+                () => controller.isLoading.value
+                    ? const Center(child: CircularProgressIndicator())
+                    : Center(
+                        child: Container(
+                          // color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              //headerMedile(),
+                              // Center(
+                              //   child: Stack(
+                              //     children: [
+                              //       // Background image
+                              //       CustomPaint(
+                              //         size: const Size(170, 30),
+                              //         painter: ShapePainter(Colore: AppColors.primaryColor),
+                              //       ),
+                              //
+                              //       // Your Container with the discount label
+                              //       Positioned.fill(
+                              //         child: Text(
+                              //           '',
+                              //           textAlign: TextAlign.center,
+                              //           style: Styles.inriaSansBold.copyWith(
+                              //               color: AppColors.whites,
+                              //               fontSize: Dimensions.fontSizeLarge),
+                              //         ),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
+                              // SearchKeyWidget(items: controller.tages, onTap: (index) {},),
+                              SearchKeyWidget(
+                                items: controller.tages,
+                                onTap: (index) {
+                                  controller.selected.value = index;
+                                  controller.getmeeting_by_date(index);
+                                },
+                                SelectedIndex: controller.selected.value,
                               ),
-                              child: Image.asset(Images.poweredby),
-                            ),
-                            const SizedBox(height: Dimensions.x0_8),
-
-                            Text(
-                              "App Version ${controller.appName.value}",
-                              textAlign: TextAlign.center,
-                              style: Styles.inriaSansBold.copyWith(
-                                fontSize: Dimensions.fontSizeLarge,
-                                color: const Color(0xFF626262),
-                                fontWeight: FontWeight.w500,
+                              Column(
+                                children: _buildDynamicRowsproductSlider(
+                                  context,
+                                ), // Generate rows dynamically from data
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: Dimensions.x40),
+
+                              // OR continue with text
+                              // Text(
+                              //   '-- Powered By --',
+                              //   textAlign: TextAlign.center,
+                              //   style: Styles.inriaSansBold.copyWith(
+                              //     fontSize: Dimensions.fontSizeLarge,
+                              //     color: const Color(0xFF626262),
+                              //     fontWeight: FontWeight.w500,
+                              //   ),
+                              // ),
+                              // Container(
+                              //   height: 200,width: 200,
+                              //   decoration: const BoxDecoration(
+                              //     image: DecorationImage(
+                              //       image: AssetImage(Images.toll_free_qr),
+                              //       fit: BoxFit.fill,
+                              //     ),
+                              //   ),
+                              // ),
+                              //     const SizedBox(height: Dimensions.x16),
+                              // Text(
+                              //   "${AppConstants.tollfree}",
+                              //   textAlign: TextAlign.center,
+                              //   style: Styles.inriaSansBold.copyWith(
+                              //     fontSize: Dimensions.fontSizeLarge,
+                              //     color: AppColors.primaryColor,
+                              //     fontWeight: FontWeight.w500,
+                              //   ),),
+                              const SizedBox(height: Dimensions.x20),
+                              // Terms & Conditions
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                child: Image.asset(Images.poweredby),
+                              ),
+                              const SizedBox(height: Dimensions.x0_8),
+
+                              Text(
+                                "App Version ${controller.appName.value}",
+                                textAlign: TextAlign.center,
+                                style: Styles.inriaSansBold.copyWith(
+                                  fontSize: Dimensions.fontSizeLarge,
+                                  color: const Color(0xFF626262),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

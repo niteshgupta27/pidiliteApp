@@ -30,7 +30,8 @@ controller.startAnimation();
         shadowColor: AppColors.gray.withOpacity(0.5),
         surfaceTintColor: Colors.transparent,
       ),
-     body: Obx(() {
+     body: SafeArea(
+       child: Obx(() {
   return Column(
     children: [
       Row(
@@ -48,7 +49,7 @@ controller.startAnimation();
                     bottom: Dimensions.x30
                 ),
                 decoration: BoxDecoration(
-                  color: controller.selectedIndex == 0 ? AppColors.primaryColor : AppColors.whites,
+                  color: controller.selectedIndex.value == 0 ? AppColors.primaryColor : AppColors.whites,
                   borderRadius: BorderRadius.circular(Dimensions.radiusSizeSmall),
                   border: Border.all(color: AppColors.primaryColor),
                 ),
@@ -56,7 +57,7 @@ controller.startAnimation();
                   child: Text(
                     'Pending',
                     style: Styles.inriaSansBold.copyWith(fontSize: Dimensions.fontSizeMedium,
-                      color: controller.selectedIndex == 0
+                      color: controller.selectedIndex.value == 0
                           ? AppColors.whites
                           : AppColors.primaryColor,
                     ),
@@ -79,14 +80,14 @@ controller.startAnimation();
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimensions.radiusSizeSmall),
                   border: Border.all(color: AppColors.primaryColor),
-                  color: controller.selectedIndex == 1 ? AppColors.primaryColor : AppColors.whites,
+                  color: controller.selectedIndex.value == 1 ? AppColors.primaryColor : AppColors.whites,
                 ),
                 child: Center(
                   child: Text(
                     'Follow Up',
                     style: Styles.inriaSansBold.copyWith(
                       fontSize: Dimensions.fontSizeMedium,
-                      color: controller.selectedIndex == 1 ? AppColors.whites : AppColors.primaryColor,
+                      color: controller.selectedIndex.value == 1 ? AppColors.whites : AppColors.primaryColor,
                     ),
                   ),
                 ),
@@ -110,7 +111,8 @@ controller.startAnimation();
       ),
     ],
   );
-})
+}),
+     )
     );
   }
 }

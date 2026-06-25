@@ -71,7 +71,7 @@ class LiveView extends GetView<AttendeeController> {
                                 color: order.tollfree == 1 ? Colors.green : Colors.red,
                                 size: 20,
                               ),
-                              onTap: () => CallService.makeDirectCall(order.fldMobile!),
+                              onTap: () => CallService.makeDirectCall(order.fldMobile),
                             ),
                             const SizedBox(width: 10),
                             Text(

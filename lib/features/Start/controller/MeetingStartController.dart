@@ -53,23 +53,24 @@ RxString fld_p_image_path="".obs;
       File file = File(result["result"]);
       File processedFile =  await ImageHelper.processImage(file,meeting.value,Hotel_NameController.value.text);
       print("object image ${processedFile.path}");
+      String? compressedPath = await ImageHelper.compressImage(processedFile);
       if(imagetype=="p") {
-        fld_p_image_path.value = processedFile.path;
+        fld_p_image_path.value = compressedPath ?? processedFile.path;
       }else if(imagetype=="t") {
-        fld_t_image_path.value = processedFile.path;
+        fld_t_image_path.value = compressedPath ?? processedFile.path;
       }
       else if(imagetype=="c") {
-        fld_c_image_path.value = processedFile.path;
+        fld_c_image_path.value = compressedPath ?? processedFile.path;
       }
       } catch (e) {
-      AppUtils.showSnackbar(e.toString(), "Info");
+      AppUtils.showSnackbar(Get.context!,e.toString(), "Info");
       print("Error during image selection: $e"); //Proper logging for debugging and reporting
       // Handle errors appropriately, e.g., display an error message to the user.
     }
     }
 
     }else{
-      AppUtils.showSnackbar("Please enter Hotel Name First.", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter Hotel Name First.", "Info");
     }
   }
 
@@ -78,7 +79,7 @@ RxString fld_p_image_path="".obs;
       HomeApi();
 
     }else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
   void HomeApi() {
@@ -104,12 +105,12 @@ RxString fld_p_image_path="".obs;
       } else {
         // Get.back();
 
-        AppUtils.showSnackbar(value.message.toString(),  "Info");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),  "Info");
       }
     }).catchError((err) {
       // Get.back();
       isLoading.value = false;
-      AppUtils.showSnackbar("Something went wrong","Oops");
+      AppUtils.showSnackbar(Get.context!,"Something went wrong","Oops");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -142,28 +143,28 @@ RxString fld_p_image_path="".obs;
             // Get.offNamed(Routes.HOMESCREEN);
             CallNoteAdd_update();
           } else {
-            AppUtils.showSnackbar("Please check Internet Connection", "Info");
+            AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
           }
         }else{
-          AppUtils.showSnackbar("Please enter a c.", "Info");
+          AppUtils.showSnackbar(Get.context!,"Please enter a c.", "Info");
         }
       } else {
-        AppUtils.showSnackbar("Please enter a t.", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please enter a t.", "Info");
         //Show error
       }
     } else {
-      AppUtils.showSnackbar("Please enter a p", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter a p", "Info");
       //Show N
     }
         }else{
-          AppUtils.showSnackbar("Please enter a Hotel Manger Number.", "Info");
+          AppUtils.showSnackbar(Get.context!,"Please enter a Hotel Manger Number.", "Info");
         }
       } else {
-        AppUtils.showSnackbar("Please enter a Hotel Manger Name.", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please enter a Hotel Manger Name.", "Info");
         //Show error
       }
     } else {
-      AppUtils.showSnackbar("Please enter a Hotel Name.", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter a Hotel Name.", "Info");
       //Show N
     }
   }
@@ -190,11 +191,11 @@ RxString fld_p_image_path="".obs;
         changeMeetingStatus();
        // AppUtils.showSnackbar(value.message.toString(),"success");
       }else{
-        AppUtils.showSnackbar(value.message.toString(),"Error");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
       }
     }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"server Error");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -213,13 +214,13 @@ RxString fld_p_image_path="".obs;
       isLoading.value = false;
       if(value.success==true) {
         Get.back(result: {"status": "success",});
-        AppUtils.showSnackbar(value.message.toString(),"success");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"success");
       }else{
-        AppUtils.showSnackbar(value.message.toString(),"Error");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
       }
     }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"server Error");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }

@@ -47,13 +47,13 @@ String tempimage="";
     //   setState(() {
     //     isLoading = false;
     //   });
-    //   ScaffoldMessenger.of(context).showSnackBar(
+    //   ScaffoldMessenger.of(context).showSnackbar(Get.context!,
     //     SnackBar(content: Text("Camera permission is required to continue")),
     //   );
     //   return;
     // }
     _cameras = await availableCameras();
-    _controller = CameraController(_cameras[cameramode], ResolutionPreset.high);
+    _controller = CameraController(_cameras[cameramode], ResolutionPreset.medium);
 
     _controller.initialize().then((_) {
       // _initializeControllerFuture = true;
@@ -160,48 +160,50 @@ String tempimage="";
             onPressed: () => Navigator.pop(context),
           )
          ),
-      body: Stack(
-        children: <Widget>[
-          ModalProgressHUD(
-
-            inAsyncCall: isLoading,
-            opacity: 0.5,
-            child: isLoading ? const Center(child: CircularProgressIndicator()) :iscamerapreview? Positioned.fill(child: Image.file(
-              File(tempimage),
-             // width: double.infinity,
-             // height: double.infinity,
-              fit: BoxFit.fill, // Equivalent to android:scaleType="fitXY"
-            ),):Positioned.fill(child:CameraPreview(_controller)),
-          ),
-          if(!iscamerapreview)
-          Align(
-            alignment: Alignment.bottomCenter,
-
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 30),
-              child:  FloatingActionButton(
-              onPressed: () {
-                _takePicture(context);
-              }, backgroundColor: Colors.transparent,
-              shape: CircleBorder(),
-              child: Icon(Icons.camera,size: 70,color: AppColors.primaryColor,),
-            ),)
-          ),
-          if(iscamerapreview)
-          Positioned(
-            bottom: 20,
-            left: 20,
-            right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildButton(Icons.close, "Cancel", _cancel),
-                _buildButton(Icons.rotate_right, "Rotate", _rotateImage),
-                _buildButton(Icons.check, "Ok", _saveImage),
-              ],
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            ModalProgressHUD(
+  
+              inAsyncCall: isLoading,
+              opacity: 0.5,
+              child: isLoading ? const Center(child: CircularProgressIndicator()) :iscamerapreview? Positioned.fill(child: Image.file(
+                File(tempimage),
+               // width: double.infinity,
+               // height: double.infinity,
+                fit: BoxFit.fill, // Equivalent to android:scaleType="fitXY"
+              ),):Positioned.fill(child:CameraPreview(_controller)),
             ),
-          )
-        ],
+            if(!iscamerapreview)
+            Align(
+              alignment: Alignment.bottomCenter,
+  
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 30),
+                child:  FloatingActionButton(
+                onPressed: () {
+                  _takePicture(context);
+                }, backgroundColor: Colors.transparent,
+                shape: CircleBorder(),
+                child: Icon(Icons.camera,size: 70,color: AppColors.primaryColor,),
+              ),)
+            ),
+            if(iscamerapreview)
+            Positioned(
+              bottom: 20,
+              left: 20,
+              right: 20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildButton(Icons.close, "Cancel", _cancel),
+                  _buildButton(Icons.rotate_right, "Rotate", _rotateImage),
+                  _buildButton(Icons.check, "Ok", _saveImage),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
 

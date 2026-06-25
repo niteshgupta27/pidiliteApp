@@ -52,7 +52,7 @@ class PermissionController extends GetxController with WidgetsBindingObserver {
       isLocationEnabled = await Geolocator.isLocationServiceEnabled();
 
       if (!isLocationEnabled) {
-        AppUtils.showSnackbar('Please enable your location', "");
+        AppUtils.showSnackbar(Get.context!,'Please enable your location', "");
         // If still not enabled after user interaction, consider navigating
         // Get.offAllNamed(Routes.Permission);
       }

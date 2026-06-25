@@ -43,7 +43,7 @@ class MeetingDashboardController extends GetxController {
     if (await AppUtils.checkInternetConnectivity()) {
       checkUser();
     } else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
 
@@ -64,12 +64,12 @@ class MeetingDashboardController extends GetxController {
               startSendingData();
             }
           } else {
-            AppUtils.showSnackbar(value.message.toString(), "Info");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "Info");
           }
         })
         .catchError((err) {
           isLoading.value = false;
-          AppUtils.showSnackbar("Something went wrong", "Oops");
+          AppUtils.showSnackbar(Get.context!,"Something went wrong", "Oops");
         });
     // checkPermissions(); // REMOVE this redundant call if already in onInit
   }
@@ -141,12 +141,12 @@ class MeetingDashboardController extends GetxController {
               );
             }
           } else {
-            AppUtils.showSnackbar(value.message.toString(), "Info");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "Info");
           }
         })
         .catchError((err) {
           isLoading.value = false;
-          AppUtils.showSnackbar("Something went wrong", "Oops");
+          AppUtils.showSnackbar(Get.context!,"Something went wrong", "Oops");
         });
   }
 
@@ -162,7 +162,7 @@ class MeetingDashboardController extends GetxController {
     final result = await permissionService.requestPermissions();
 
     if (result == "Granted") {
-      // AppUtils.showSnackbar('All required permissions granted!', "");
+      // AppUtils.showSnackbar(Get.context!,'All required permissions granted!', "");
       print("Permissions granted. Proceeding with functionality.");
       fetchLocation();
     } else if (result.startsWith("Denied")) {
@@ -192,7 +192,7 @@ class MeetingDashboardController extends GetxController {
       isLocationEnabled = await Geolocator.isLocationServiceEnabled();
 
       if (!isLocationEnabled) {
-        AppUtils.showSnackbar('Please enable your location', "");
+        AppUtils.showSnackbar(Get.context!,'Please enable your location', "");
         // If still not enabled after user interaction, consider navigating
         // Get.offAllNamed(Routes.Permission);
       }
@@ -317,13 +317,13 @@ class MeetingDashboardController extends GetxController {
               showCompletionDialog();
             }
           } else {
-            AppUtils.showSnackbar(value.message.toString(), "Info");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "Info");
           }
         })
         .catchError((err) {
           print(err);
           isLoading.value = false;
-          AppUtils.showSnackbar("Something went wrong", "Oops");
+          AppUtils.showSnackbar(Get.context!,"Something went wrong", "Oops");
         });
   }
 

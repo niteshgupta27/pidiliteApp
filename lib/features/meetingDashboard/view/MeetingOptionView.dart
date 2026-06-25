@@ -45,134 +45,136 @@ class MeetingOptionView extends GetView<MeetingOptionController> {
           ],
         ),
 
-        body: controller.isLoading.value
-            ? const Center(child: CircularProgressIndicator())
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10),
-                  // Carousel
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      controller.meeting.value.fldLocation!,
-                      style: Styles.headerTitel,
-                    ),
-                  ),
-
-                  SizedBox(height: 10),
-                  // GridView for options
-                  Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      padding: const EdgeInsets.all(10),
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      childAspectRatio: 1.2,
-                      children: [
-                        // _buildGridItem(Images.estimates, "Estimates", Colors.pink.shade50),
-                        // _buildGridItem(Images.account, "Accounts", Colors.blue.shade50),
-                        _buildGridItem(
-                          Images.Meeting_Start,
-                          "Meeting Start",
-                          Colors.yellow.shade50,
-                        ),
-                        if (controller.data.value.meetingInfo == 1 ||
-                            controller.data.value.meetingPhoto == 1 ||
-                            controller.data.value.meetingDetails == 1 ||
-                            controller.data.value.meetingAttendees == 1)
-                          _buildGridItem(
-                            Images.Meeting_Details,
-                            "Meeting Details",
-                            Colors.green.shade50,
-                          ),
-                        if (controller.data.value.meetingInfo == 1 ||
-                            controller.data.value.meetingPhoto == 1 ||
-                            controller.data.value.meetingDetails == 1 ||
-                            controller.data.value.meetingAttendees == 1)
-                          _buildGridItem(
-                            Images.Meeting_Photos,
-                            "Meeting Photos",
-                            Colors.purple.shade50,
-                          ),
-                        if (controller.data.value.meetingInfo == 1 ||
-                            controller.data.value.meetingPhoto == 1 ||
-                            controller.data.value.meetingDetails == 1 ||
-                            controller.data.value.meetingAttendees == 1)
-                          _buildGridItem(
-                            Images.Attendee,
-                            "Attendee List",
-                            Colors.orange.shade50,
-                          ),
-                      ],
-                    ),
-                  ),
-                  if (controller.data.value.meetingFinish == 1)
-                   Center(child:  SizedBox(
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              10,
-                            ), // Set the radius here
-                          ),
-                        ),
-                        onPressed: () {
-                          controller.finshbutton();
-                        },
-                        child: Text(
-                          "Finish Meeting".tr,
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColors.whites),
-                        ),
-                      ),
-                    ),),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+        body: SafeArea(
+          child: controller.isLoading.value
+              ? const Center(child: CircularProgressIndicator())
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10),
+                    // Carousel
+                    Padding(
+                      padding: EdgeInsets.all(10),
                       child: Text(
-                        '${controller.data.value.messageTextDetail.isNotEmpty ? "---${controller.data.value.messageTextDetail}--" : ""}\n${controller.data.value.messageTextAttendees.isNotEmpty ? "---${controller.data.value.messageTextAttendees}---\n" : ""}${controller.data.value.messageTextPhoto.isNotEmpty ? "---${controller.data.value.messageTextPhoto}---" : ""}',
-                        style: TextStyle(color: Colors.red, fontSize: 12),
+                        controller.meeting.value.fldLocation!,
+                        style: Styles.headerTitel,
+                      ),
+                    ),
+
+                    SizedBox(height: 10),
+                    // GridView for options
+                    Expanded(
+                      child: GridView.count(
+                        crossAxisCount: 2,
+                        padding: const EdgeInsets.all(10),
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20,
+                        childAspectRatio: 1.2,
+                        children: [
+                          // _buildGridItem(Images.estimates, "Estimates", Colors.pink.shade50),
+                          // _buildGridItem(Images.account, "Accounts", Colors.blue.shade50),
+                          _buildGridItem(
+                            Images.Meeting_Start,
+                            "Meeting Start",
+                            Colors.yellow.shade50,
+                          ),
+                          if (controller.data.value.meetingInfo == 1 ||
+                              controller.data.value.meetingPhoto == 1 ||
+                              controller.data.value.meetingDetails == 1 ||
+                              controller.data.value.meetingAttendees == 1)
+                            _buildGridItem(
+                              Images.Meeting_Details,
+                              "Meeting Details",
+                              Colors.green.shade50,
+                            ),
+                          if (controller.data.value.meetingInfo == 1 ||
+                              controller.data.value.meetingPhoto == 1 ||
+                              controller.data.value.meetingDetails == 1 ||
+                              controller.data.value.meetingAttendees == 1)
+                            _buildGridItem(
+                              Images.Meeting_Photos,
+                              "Meeting Photos",
+                              Colors.purple.shade50,
+                            ),
+                          if (controller.data.value.meetingInfo == 1 ||
+                              controller.data.value.meetingPhoto == 1 ||
+                              controller.data.value.meetingDetails == 1 ||
+                              controller.data.value.meetingAttendees == 1)
+                            _buildGridItem(
+                              Images.Attendee,
+                              "Attendee List",
+                              Colors.orange.shade50,
+                            ),
+                        ],
+                      ),
+                    ),
+                    if (controller.data.value.meetingFinish == 1)
+                     Center(child:  SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ), // Set the radius here
+                            ),
+                          ),
+                          onPressed: () {
+                            controller.finshbutton();
+                          },
+                          child: Text(
+                            "Finish Meeting".tr,
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: AppColors.whites),
+                          ),
+                        ),
+                      ),),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          '${controller.data.value.messageTextDetail.isNotEmpty ? "---${controller.data.value.messageTextDetail}--" : ""}\n${controller.data.value.messageTextAttendees.isNotEmpty ? "---${controller.data.value.messageTextAttendees}---\n" : ""}${controller.data.value.messageTextPhoto.isNotEmpty ? "---${controller.data.value.messageTextPhoto}---" : ""}',
+                          style: TextStyle(color: Colors.red, fontSize: 12),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    // Footer
+                    const SizedBox(height: Dimensions.x16),
+
+                    // Center(child: Text(
+                    //       "${AppConstants.tollfree}",
+                    //       textAlign: TextAlign.center,
+                    //       style: Styles.inriaSansBold.copyWith(
+                    //         fontSize: Dimensions.fontSizeLarge,
+                    //         color: AppColors.primaryColor,
+                    //         fontWeight: FontWeight.w500,
+                    //       ),),),
+                    //     const SizedBox(height: Dimensions.x16),
+
+                    // Terms & Conditions
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Image.asset(Images.poweredby),
+                      ),
+                    ),
+                    const SizedBox(height: Dimensions.x0_8),
+
+                    Center(
+                      child: Text(
+                        "App Version ${controller.appName.value}",
                         textAlign: TextAlign.center,
+                        style: Styles.inriaSansBold.copyWith(
+                          fontSize: Dimensions.fontSizeLarge,
+                          color: const Color(0xFF626262),
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
-                  ),
-                  // Footer
-                  const SizedBox(height: Dimensions.x16),
-
-                  // Center(child: Text(
-                  //       "${AppConstants.tollfree}",
-                  //       textAlign: TextAlign.center,
-                  //       style: Styles.inriaSansBold.copyWith(
-                  //         fontSize: Dimensions.fontSizeLarge,
-                  //         color: AppColors.primaryColor,
-                  //         fontWeight: FontWeight.w500,
-                  //       ),),),
-                  //     const SizedBox(height: Dimensions.x16),
-
-                  // Terms & Conditions
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Image.asset(Images.poweredby),
-                    ),
-                  ),
-                  const SizedBox(height: Dimensions.x0_8),
-
-                  Center(
-                    child: Text(
-                      "App Version ${controller.appName.value}",
-                      textAlign: TextAlign.center,
-                      style: Styles.inriaSansBold.copyWith(
-                        fontSize: Dimensions.fontSizeLarge,
-                        color: const Color(0xFF626262),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+        ),
       );
     });
   }

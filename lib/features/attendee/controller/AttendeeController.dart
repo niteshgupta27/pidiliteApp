@@ -38,7 +38,7 @@ class AttendeeController extends GetxController {
     if (await AppUtils.checkInternetConnectivity()) {
       HomeApi();
     } else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
 
@@ -71,13 +71,13 @@ class AttendeeController extends GetxController {
           } else {
             // Get.back();
 
-            AppUtils.showSnackbar(value.message.toString(), "Info");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "Info");
           }
         })
         .catchError((err) {
           // Get.back();
           isLoading.value = false;
-          AppUtils.showSnackbar("Something went wrong", "Oops");
+          AppUtils.showSnackbar(Get.context!,"Something went wrong", "Oops");
           //AppUtils.alert("Something went wrong", title: "Oops");
         });
   }
@@ -96,13 +96,13 @@ class AttendeeController extends GetxController {
           } else {
             // Get.back();
 
-            AppUtils.showSnackbar(value.message.toString(), "Info");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "Info");
           }
         })
         .catchError((err) {
           // Get.back();
           isLoading.value = false;
-          AppUtils.showSnackbar("Something went wrong", "Oops");
+          AppUtils.showSnackbar(Get.context!,"Something went wrong", "Oops");
           //AppUtils.alert("Something went wrong", title: "Oops");
         });
   }

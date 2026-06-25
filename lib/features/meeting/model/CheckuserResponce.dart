@@ -47,11 +47,11 @@ class AppData {
 
   factory AppData.fromJson(Map<String, dynamic> json) {
     return AppData(
-      userId: json['user_id'],
-      version: json['version'],
-      versionMessage: json['versionmessage'],
-      linkMessage: json['linkmessage'],
-      appLink: json['applink'],
+      userId: json['user_id']?.toString() ?? '',
+      version: json['version']?.toString() ?? '',
+      versionMessage: json['versionmessage']?.toString() ?? '',
+      linkMessage: json['linkmessage']?.toString() ?? '',
+      appLink: json['applink']?.toString() ?? '',
     );
   }
 

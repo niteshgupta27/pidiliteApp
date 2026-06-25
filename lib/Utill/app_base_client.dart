@@ -229,7 +229,7 @@ print(response.statusCode);
         if (Get.currentRoute != Routes.LOGINSCREEN) {
           appStorage.resetStorage();
           Get.offAllNamed(Routes.LOGINSCREEN);
-          AppUtils.showSnackbar("Session Timed out, Please login to proceed","");
+          AppUtils.showSnackbar(Get.context!,"Session Timed out, Please login to proceed","");
         }
         throw BadRequestException('Something went wrong', url);
 

@@ -51,16 +51,18 @@ class AddMeetingPhotosController extends GetxController {
           File file = File(result["result"]);
           File processedFile = await ImageHelper.processImage(file, meeting.value, selectedOption.value != null ? selectedOption.value!.fldPurpose : "");
 
-          fld_p_image_path.value = processedFile.path;
+          String? compressedPath = await ImageHelper.compressImage(processedFile);
+
+          fld_p_image_path.value = compressedPath ?? processedFile.path;
         } catch (e) {
-        AppUtils.showSnackbar(e.toString(), "Info");
+        AppUtils.showSnackbar(Get.context!,e.toString(), "Info");
         print("Error during image selection: $e"); //Proper logging for debugging and reporting
         // Handle errors appropriately, e.g., display an error message to the user.
       }
         }
 
     }else{
-      AppUtils.showSnackbar("Select Photo Type First.", "Info");
+      AppUtils.showSnackbar(Get.context!,"Select Photo Type First.", "Info");
     }
   }
 
@@ -69,7 +71,7 @@ class AddMeetingPhotosController extends GetxController {
      // HomeApi();
 
     }else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
 
@@ -83,15 +85,15 @@ class AddMeetingPhotosController extends GetxController {
                   // Get.offNamed(Routes.HOMESCREEN);
                   CallNoteAdd_update();
                 } else {
-                  AppUtils.showSnackbar("Please check Internet Connection", "Info");
+                  AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
                 }
 
           } else {
-            AppUtils.showSnackbar("Please take a picture First", "Info");
+            AppUtils.showSnackbar(Get.context!,"Please take a picture First", "Info");
             //Show N
           }
         }else{
-          AppUtils.showSnackbar("Please Select a Photo Type.", "Info");
+          AppUtils.showSnackbar(Get.context!,"Please Select a Photo Type.", "Info");
         }
 
   }
@@ -114,13 +116,13 @@ class AddMeetingPhotosController extends GetxController {
       isLoading.value = false;
       if(value.success==true) {
         Get.back(result: {"status": "success",});
-         AppUtils.showSnackbar(value.message.toString(),"success");
+         AppUtils.showSnackbar(Get.context!,value.message.toString(),"success");
       }else{
-        AppUtils.showSnackbar(value.message.toString(),"Error");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
       }
     }).catchError((err) {
       isLoading.value = false;
-      AppUtils.showSnackbar(err.toString(),"server Error");
+      AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }
@@ -139,13 +141,13 @@ class AddMeetingPhotosController extends GetxController {
   //     isLoading.value = false;
   //     if(value.success==true) {
   //       Get.back(result: {"status": "success",});
-  //       AppUtils.showSnackbar(value.message.toString(),"success");
+  //       AppUtils.showSnackbar(Get.context!,value.message.toString(),"success");
   //     }else{
-  //       AppUtils.showSnackbar(value.message.toString(),"Error");
+  //       AppUtils.showSnackbar(Get.context!,value.message.toString(),"Error");
   //     }
   //   }).catchError((err) {
   //     isLoading.value = false;
-  //     AppUtils.showSnackbar(err.toString(),"server Error");
+  //     AppUtils.showSnackbar(Get.context!,err.toString(),"server Error");
   //     //AppUtils.alert("Something went wrong", title: "Oops");
   //   });
   // }

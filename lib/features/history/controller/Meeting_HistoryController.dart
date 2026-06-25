@@ -53,7 +53,7 @@ class Meeting_HistoryController extends GetxController {
       HomeApi();
 
     }else {
-    AppUtils.showSnackbar("Please check Internet Connection", "Info");
+    AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
   void HomeApi() {
@@ -88,12 +88,12 @@ class Meeting_HistoryController extends GetxController {
       } else {
        // Get.back();
 
-        AppUtils.showSnackbar(value.message.toString(),  "Info");
+        AppUtils.showSnackbar(Get.context!,value.message.toString(),  "Info");
       }
     }).catchError((err) {
       // Get.back();
       isLoading.value = false;
-      AppUtils.showSnackbar("Something went wrong","Oops");
+      AppUtils.showSnackbar(Get.context!,"Something went wrong","Oops");
       //AppUtils.alert("Something went wrong", title: "Oops");
     });
   }

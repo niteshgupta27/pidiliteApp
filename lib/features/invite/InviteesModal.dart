@@ -16,7 +16,7 @@ class InviteesModal {
     return InviteesModal(
       status: json['status'],
       success: json['success'],
-      message: json['message'],
+      message: json['message']?.toString(),
       data: json['data'] != null
           ? (json['data'] as List).map((item) => Datum.fromJson(item)).toList()
           : null,
@@ -33,35 +33,33 @@ class InviteesModal {
     };
   }
 }
-class Datum {
 
+class Datum {
   String? fldName;
   String? fldNumber;
   String? fldAttending;
   String? fld_dialed;
-  Datum({
 
+  Datum({
     this.fldName,
     this.fldNumber,
     this.fldAttending,
-    this.fld_dialed
+    this.fld_dialed,
   });
 
   // Factory constructor to create a Datum instance from JSON
   factory Datum.fromJson(Map<String, dynamic> json) {
     return Datum(
-
-      fldName: json['fld_attendee_name'],
-      fldNumber: json['fld_mobile'],
-      fldAttending: json['fld_aid'],
-        fld_dialed: json['fld_dialed']
+      fldName: json['fld_attendee_name']?.toString(),
+      fldNumber: json['fld_mobile']?.toString(),
+      fldAttending: json['fld_aid']?.toString(),
+      fld_dialed: json['fld_dialed']?.toString(),
     );
   }
 
   // Convert Datum instance to JSON
   Map<String, dynamic> toJson() {
     return {
-
       'fld_name': fldName,
       'fld_number': fldNumber,
       'fld_attending': fldAttending,

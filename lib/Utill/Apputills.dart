@@ -10,28 +10,22 @@ import 'app_required.dart';
 class AppUtils {
   AppUtils._();
 
-  static showSnackbar( String message,String Title) {
-    Get.snackbar(
-      Title, // Title
-      message, // Message
-      snackPosition: SnackPosition.BOTTOM, // Position of the SnackBar
-      backgroundColor: Colors.blue, // Background color
-      colorText: Colors.white, // Text color
-      duration: Duration(seconds: 4), // Duration for how long the SnackBar stays
-    );
+  static showSnackbar(BuildContext context, String message,String Title) {
+    Future.delayed(const Duration(milliseconds: 200), () {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    });
   }
   static Future<bool> checkInternetConnectivity() async {
-    final pidiliteivityResult = await (Connectivity().checkConnectivity());
-    if (pidiliteivityResult == ConnectivityResult.mobile) {
-      debugPrint("User is connectivity to mobile network");
-      return true;
-    } else if (pidiliteivityResult == ConnectivityResult.wifi) {
-      debugPrint("User is connectivity to wifi network");
-      return true;
-    } else {
-//showToast("Check Internet pidiliteivity");
+    final results = await (Connectivity().checkConnectivity());
+    if (results.contains(ConnectivityResult.none)) {
       return false;
     }
+    return true;
   }
   static Future<void> launchURL(String url) async {
     if (!await launchUrl(Uri.parse(url), mode: LaunchMode.externalNonBrowserApplication)) {

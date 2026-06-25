@@ -72,18 +72,18 @@ class AddAttendeeController extends GetxController {
         Table_Attendee data = arguments['Attendees'];
         Phone_NumberController.value.text = data.fldMobile;
         Painter_NameController.value.text = data.fldAttendeeName;
-        Pan_CardController.value.text = data.fldPancard!;
-        //  QualificationController.value.text = data.fldQualification!;
-        //  ReasonController.value.text = data.fldNotDownloadReason!;
-        //  teamSizeController.value.text = data.fldContractorTeamSize!;
-        //  sitesController.value.text = data.fldContractorSites!;
+        Pan_CardController.value.text = data.fldPancard ?? '';
+        //  QualificationController.value.text = data.fldQualification ?? '';
+        //  ReasonController.value.text = data.fldNotDownloadReason ?? '';
+        //  teamSizeController.value.text = data.fldContractorTeamSize ?? '';
+        //  sitesController.value.text = data.fldContractorSites ?? '';
         // // DealerCodeController.value.text = data.fld;
         //  orderValueController.value.text = data.fldOrderPlaced;
-        //  orderDeailController.value.text = data.fldOrderDetails!;
+        //  orderDeailController.value.text = data.fldOrderDetails ?? '';
         //   GiftGivenController.value.text = data.fldGiftGiven;
-        remark1Controller.value.text = data.fldRemark1!;
-        remark2Controller.value.text = data.fldRemark2!;
-        remark3Controller.value.text = data.fldRemark3!;
+        remark1Controller.value.text = data.fldRemark1 ?? '';
+        remark2Controller.value.text = data.fldRemark2 ?? '';
+        remark3Controller.value.text = data.fldRemark3 ?? '';
         // smartphoneOption.value=data.fldSmartphone=="1"?"Yes":"No";
         //  DownloadApp.value=data.fldAppDownloadNebula=="1"?"Yes":"No";
         //  PolisherApp.value=data.fldAppDownloadAttendee=="1"?"Yes":"No";
@@ -97,15 +97,15 @@ class AddAttendeeController extends GetxController {
           selectedDealer.value = dealers.firstWhere(
             (dealer) => dealer.fldDrid == int.parse(data.fldDealerId),
           );
-          DealerCodeController.value.text = selectedDealer.value.fldRcode!;
+          DealerCodeController.value.text = selectedDealer.value.fldRcode ?? '';
         } else {
           selectedDealer.value = dealers.first;
-          DealerCodeController.value.text = selectedDealer.value.fldRcode!;
+          DealerCodeController.value.text = selectedDealer.value.fldRcode ?? '';
         }
         //CallGetdata();
       } else {
         selectedDealer.value = dealers.first;
-        DealerCodeController.value.text = selectedDealer.value.fldRcode!;
+        DealerCodeController.value.text = selectedDealer.value.fldRcode ?? '';
       }
     }
     CallGetdata();
@@ -134,11 +134,12 @@ class AddAttendeeController extends GetxController {
             meeting.value,
             Painter_NameController.value.text,
           );
+          String? compressedPath = await ImageHelper.compressImage(processedFile);
           if (imagetype == "p") {
-            fld_p_image_path.value = processedFile.path;
+            fld_p_image_path.value = compressedPath ?? processedFile.path;
           }
         } catch (e) {
-          AppUtils.showSnackbar(e.toString(), "Info");
+          AppUtils.showSnackbar(Get.context!,e.toString(), "Info");
           print(
             "Error during image selection: $e",
           ); //Proper logging for debugging and reporting
@@ -146,7 +147,7 @@ class AddAttendeeController extends GetxController {
         }
       }
     } else {
-      AppUtils.showSnackbar("Please enter your name", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter your name", "Info");
     }
   }
 
@@ -154,13 +155,13 @@ class AddAttendeeController extends GetxController {
     String regex = r'^[6-9]\d{9}$';
 
     if (Painter_NameController.value.text.trim().isEmpty) {
-      AppUtils.showSnackbar("Please enter your name", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter your name", "Info");
     } else if (Phone_NumberController.value.text.trim().isEmpty) {
-      AppUtils.showSnackbar("Please enter mobile number", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter mobile number", "Info");
     } else if (!RegExp(regex).hasMatch(Phone_NumberController.value.text)) {
-      AppUtils.showSnackbar("Please enter valid mobile number", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter valid mobile number", "Info");
     } else if (ShopnameController.value.text.trim().isEmpty) {
-      AppUtils.showSnackbar("Please enter shop name", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please enter shop name", "Info");
     }
     // else if (ShopLocationController.value.text.trim().isEmpty) {
     //   AppUtils.showSnackbar("Please enter shop location", "Info");
@@ -179,13 +180,13 @@ class AddAttendeeController extends GetxController {
     //   AppUtils.showSnackbar("Please enter number of Site", "Info");
     // }
     else if (selectedDealer.value.fldDrid == 0) {
-      AppUtils.showSnackbar("Please select dealer name", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please select dealer name", "Info");
     } else {
       if (await AppUtils.checkInternetConnectivity()) {
         // Get.offNamed(Routes.HOMESCREEN);
         CallNoteAdd_update();
       } else {
-        AppUtils.showSnackbar("Please check Internet Connection", "Info");
+        AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
       }
     }
   }
@@ -258,14 +259,14 @@ class AddAttendeeController extends GetxController {
           isLoading.value = false;
           if (value.success == true) {
             Get.back(result: {"status": "success"});
-            AppUtils.showSnackbar(value.message.toString(), "success");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "success");
           } else {
-            AppUtils.showSnackbar(value.message.toString(), "Error");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "Error");
           }
         })
         .catchError((err) {
           isLoading.value = false;
-          AppUtils.showSnackbar(err.toString(), "server Error");
+          AppUtils.showSnackbar(Get.context!,err.toString(), "server Error");
           //AppUtils.alert("Something went wrong", title: "Oops");
         });
   }
@@ -284,13 +285,13 @@ class AddAttendeeController extends GetxController {
           } else {
             // Get.back();
 
-            AppUtils.showSnackbar(value.message.toString(), "Info");
+            AppUtils.showSnackbar(Get.context!,value.message.toString(), "Info");
           }
         })
         .catchError((err) {
           // Get.back();
           isLoading.value = false;
-          AppUtils.showSnackbar("Something went wrong", "Oops");
+          AppUtils.showSnackbar(Get.context!,"Something went wrong", "Oops");
           //AppUtils.alert("Something went wrong", title: "Oops");
         });
   }
@@ -299,7 +300,7 @@ class AddAttendeeController extends GetxController {
     if (await AppUtils.checkInternetConnectivity()) {
       getstaffvalue();
     } else {
-      AppUtils.showSnackbar("Please check Internet Connection", "Info");
+      AppUtils.showSnackbar(Get.context!,"Please check Internet Connection", "Info");
     }
   }
 
