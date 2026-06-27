@@ -51,25 +51,35 @@ class AddMeetingPhotosView extends GetView<AddMeetingPhotosController> {
                       style:  Styles.headerTitel,
                     ),),
                     const SizedBox(height: 16),
-                    Wrap(
-                      spacing: 0,
-                      runSpacing: 0,
+                    GridView.count(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      crossAxisCount: 2, // two columns
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 0,
+                      childAspectRatio: 3.5, // adjust height/width ratio
+                      physics: const NeverScrollableScrollPhysics(),
                       children: controller.data.map((tag) {
-                        return RadioListTile<MeetingPhotoTypesData>(
-                          title: Text(
-                            tag.fldPurpose,
-                            style: TextStyle(fontSize: 14, height: 1), // smaller & tighter
+                        return Obx(() => RadioListTile<MeetingPhotoTypesData>(
+                          title: Transform.translate(
+                            offset: const Offset(-12, 0),
+                            child: Text(
+                              tag.fldPurpose,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 12),
+                            ),
                           ),
                           value: tag,
                           groupValue: controller.selectedOption.value,
                           onChanged: (MeetingPhotoTypesData? value) {
                             controller.selectedOption.value = value;
                           },
-                          contentPadding: EdgeInsets.zero, // remove padding
-                          visualDensity: VisualDensity(horizontal: -3, vertical: -3), // shrink space
-                         // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap, // reduce touch area
-                          dense: true, // makes list tile more compact
-                        );
+                          contentPadding: EdgeInsets.zero,
+                          dense: true,
+                          visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+                          controlAffinity: ListTileControlAffinity.leading,
+                        ));
                       }).toList(),
                     ),
                     const SizedBox(height: 16),
